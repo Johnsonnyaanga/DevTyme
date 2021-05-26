@@ -1,4 +1,4 @@
-package com.vickikbt.devtyme
+package com.vickikbt.devtyme.ui.activity
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.vickikbt.devtyme.R
 import com.vickikbt.devtyme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
