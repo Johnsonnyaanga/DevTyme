@@ -2,6 +2,7 @@ package com.vickikbt.devtyme.ui.fragment.login
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.vickikbt.devtyme.repository.AuthRepository
 import com.vickikbt.devtyme.utils.ApiException
@@ -14,13 +15,16 @@ class LoginViewModel @ViewModelInject constructor(private val authRepository: Au
 
     var stateListener: StateListener? = null
 
+    init {
+
+    }
 
     fun getNewAccessToken(code: String) {
         stateListener?.onLoading()
 
         viewModelScope.launch {
             try {
-                val response = authRepository.getNewAccessToken(code)
+                val response = authRepository.fetchNewAccessToken(code)
                 response.collect { accessToken ->
                     stateListener?.onSuccess("Access token fetched: $accessToken")
 
@@ -35,5 +39,15 @@ class LoginViewModel @ViewModelInject constructor(private val authRepository: Au
             }
         }
     }
+
+    fun isUserLoggedIn() = liveData {
+        try {
+            emit(authRepository.isUserLoggedIn())
+        } catch (e: Exception) {
+            stateListener?.onError(e)
+            return@liveData
+        }
+    }
+
 
 }

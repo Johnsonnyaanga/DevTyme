@@ -15,7 +15,7 @@ interface ApiService {
     @Headers("Accept: application/json")
     @FormUrlEncoded
     @POST("oauth/token")
-    suspend fun getNewAccessToken(
+    suspend fun fetchNewAccessToken(
         @Field("client_id") clientId: String = CLIENT_ID,
         @Field("client_secret") clientSecret: String = CLIENT_SECRET,
         @Field("redirect_uri") redirectUri: String = REDIRECT_URL,

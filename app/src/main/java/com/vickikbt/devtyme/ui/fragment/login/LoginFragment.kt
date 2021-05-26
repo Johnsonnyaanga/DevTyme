@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.vickikbt.devtyme.R
 import com.vickikbt.devtyme.databinding.FragmentLoginBinding
 import com.vickikbt.devtyme.utils.Constants
@@ -49,6 +50,7 @@ class LoginFragment : Fragment(), StateListener {
         requireActivity().startActivity(openBrowserIntent)
     }
 
+
     override fun onResume() {
         super.onResume()
 
@@ -67,12 +69,20 @@ class LoginFragment : Fragment(), StateListener {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.isUserLoggedIn().observe(viewLifecycleOwner) { isUserLoggedIn ->
+            if (isUserLoggedIn) findNavController().navigate(R.id.login_to_home)
+        }
+    }
+
     override fun onLoading() {
         Timber.e("Loading...")
     }
 
     override fun onSuccess(message: String?) {
-        Timber.e(message)
+        findNavController().navigate(R.id.login_to_home)
     }
 
     override fun onError(exception: Exception, message: String?) {

@@ -20,4 +20,7 @@ object Constants {
     const val WEB_URL =
         "https://wakatime.com/oauth/authorize?client_id=$CLIENT_ID&response_type=code&redirect_uri=$REDIRECT_URL&scope=email&scope=read_logged_time&scope=read_stats&scope=read_private_leaderboards"
 
+    const val DATABASE_VERSION = 1
+    const val DATABASE_NAME = "DevTyme.db"
+
 }
