@@ -2,8 +2,9 @@ package com.vickikbt.devtyme.utils
 
 object Constants {
 
-    //const val BASE_URL = "https://wakatime.com/api/v1/" when the user is already authorized
-    const val BASE_URL = "https://wakatime.com/"
+    const val AUTH_BASE_URL = "https://wakatime.com/"
+    const val BASE_URL = "https://wakatime.com/api/v1/"
+
 
     //TODO: Move to config file
     const val CLIENT_ID = "A0ijvQjx34y7GoMRqm9hW0VV"

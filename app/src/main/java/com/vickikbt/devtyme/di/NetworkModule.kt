@@ -1,6 +1,8 @@
 package com.vickikbt.devtyme.di
 
 import com.vickikbt.devtyme.data.network.ApiService
+import com.vickikbt.devtyme.data.network.AuthApiService
+import com.vickikbt.devtyme.utils.Constants.AUTH_BASE_URL
 import com.vickikbt.devtyme.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -52,6 +54,21 @@ object NetworkModule {
     }
 
     @Provides
-    fun providesApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+    fun providesApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
+
+    @Provides
+    fun providesAuthApiService(
+        converterFactory: Converter.Factory,
+        okHttpClient: OkHttpClient
+    ): AuthApiService {
+        return Retrofit.Builder()
+            .baseUrl(AUTH_BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(converterFactory)
+            .build()
+            .create(AuthApiService::class.java)
+    }
+
 
 }

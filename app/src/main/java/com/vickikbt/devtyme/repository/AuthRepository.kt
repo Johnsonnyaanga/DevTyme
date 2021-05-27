@@ -2,7 +2,7 @@ package com.vickikbt.devtyme.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.vickikbt.devtyme.data.cache.AppDatabase
-import com.vickikbt.devtyme.data.network.ApiService
+import com.vickikbt.devtyme.data.network.AuthApiService
 import com.vickikbt.devtyme.models.AccessToken
 import com.vickikbt.devtyme.utils.Coroutines
 import com.vickikbt.devtyme.utils.SafeApiRequest
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 class AuthRepository @Inject constructor(
-    private val apiService: ApiService,
+    private val authApiService: AuthApiService,
     private val appDatabase: AppDatabase
 ) : SafeApiRequest() {
 
@@ -26,7 +26,7 @@ class AuthRepository @Inject constructor(
     }
 
     suspend fun fetchNewAccessToken(code: String): Flow<AccessToken> {
-        val response = safeApiRequest { apiService.fetchNewAccessToken(code = code) }
+        val response = safeApiRequest { authApiService.fetchNewAccessToken(code = code) }
         accessTokenMutableLiveData.postValue(response)
         return flowOf(response)
     }
