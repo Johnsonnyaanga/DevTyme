@@ -60,7 +60,7 @@ class LoginFragment : Fragment(), StateListener {
             val code = callbackUri.getQueryParameter("code")
             if (code != null) {
                 Timber.e("Code fetched: $code")
-                viewModel.getNewAccessToken(code)
+                viewModel.fetchNewAccessToken(code)
             } else callbackUri.getQueryParameter("error")?.let {
                 Timber.e(RuntimeException(it))
             }

@@ -7,7 +7,7 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.vickikbt.devtyme.data.cache.AppDatabase
 import com.vickikbt.devtyme.data.cache.daos.UserDao
-import com.vickikbt.devtyme.models.UserData
+import com.vickikbt.devtyme.models.User
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
@@ -18,12 +18,12 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
-class UserDaoTest {
+class UserResponseDaoTest {
 
     private lateinit var appDatabase: AppDatabase
     private lateinit var userDao: UserDao
 
-    private val user = UserData(
+    private val user = User(
         "bio",
         "colorScheme",
         "createdAt",
