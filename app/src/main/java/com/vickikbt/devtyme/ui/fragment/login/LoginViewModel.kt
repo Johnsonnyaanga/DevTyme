@@ -54,8 +54,6 @@ class LoginViewModel @ViewModelInject constructor(
     }
 
     private fun fetchCurrentUser(accessToken: String) {
-        Timber.e("Fetching current user")
-
         stateListener?.onLoading()
 
         viewModelScope.launch {

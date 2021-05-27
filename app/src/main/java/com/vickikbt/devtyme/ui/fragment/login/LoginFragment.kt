@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -28,9 +29,10 @@ class LoginFragment : Fragment(), StateListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        requireActivity().setTheme(R.style.Theme_FullScreen)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         viewModel.stateListener = this
+
+        setFullScreen()
 
         initUI()
 
@@ -50,6 +52,11 @@ class LoginFragment : Fragment(), StateListener {
         requireActivity().startActivity(openBrowserIntent)
     }
 
+    //TODO: Make this reusable
+    private fun setFullScreen(setFullScreen: Boolean = true) {
+        if (setFullScreen) requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        else requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -76,6 +83,7 @@ class LoginFragment : Fragment(), StateListener {
             if (isUserLoggedIn) findNavController().navigate(R.id.login_to_home)
         }
     }
+
 
     override fun onLoading() {
         Timber.e("Loading...")
