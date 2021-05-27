@@ -23,4 +23,14 @@ interface AuthApiService {
         @Field("code") code: String
     ): Response<AccessToken>
 
+    @Headers("Accept: application/json")
+    @FormUrlEncoded
+    @POST("oauth/revoke")
+    suspend fun revokeAccessToken(
+        @Field("client_id") clientId: String = CLIENT_ID,
+        @Field("client_secret") clientSecret: String = CLIENT_SECRET,
+        @Field("token") accessToken: String,
+    ): Response<Void>
+
+
 }

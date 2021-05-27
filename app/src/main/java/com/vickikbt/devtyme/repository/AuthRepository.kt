@@ -8,6 +8,8 @@ import com.vickikbt.devtyme.utils.Coroutines
 import com.vickikbt.devtyme.utils.SafeApiRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.toList
 import javax.inject.Inject
 
 class AuthRepository @Inject constructor(
@@ -31,10 +33,18 @@ class AuthRepository @Inject constructor(
         return flowOf(response)
     }
 
+    fun getAccessToken()=accessTokenDao.getAccessToken()
+
+    suspend fun revokeAccessToken(){
+        val token=getAccessToken().take(1).toList()[0]
+        safeApiRequest { authApiService.revokeAccessToken(accessToken = token.accessToken) }
+    }
+
+    suspend fun deleteAccessToken()=accessTokenDao.deleteAccessToken()
+
     private suspend fun saveAccessToken(accessToken: AccessToken) =
         accessTokenDao.saveAccessToken(accessToken)
 
-    fun getAccessToken() = accessTokenDao.getAccessToken()
 
     suspend fun isUserLoggedIn()=accessTokenDao.isUserLoggedIn()>0
 
