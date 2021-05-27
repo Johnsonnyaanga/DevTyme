@@ -103,5 +103,12 @@ dependencies {
 
     implementation "com.airbnb.android:lottie:$lottie_version"
 
+    // Charts
+    implementation 'com.diogobernardino:williamchart:3.10.1'
+
+    //Tooltips
+    implementation 'com.diogobernardino.williamchart:tooltip-slider:3.10.1'
+    implementation 'com.diogobernardino.williamchart:tooltip-points:3.10.1'
+
 
 }
