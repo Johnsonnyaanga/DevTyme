@@ -1,5 +1,6 @@
 package com.vickikbt.devtyme.ui.fragment.home
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -52,6 +53,14 @@ class HomeFragment : Fragment(), StateListener {
                 "$greetingMessage ${user.displayName?.getDisplayName()}."
             Glide.with(this).load(user.photo).circleCrop().into(binding.imageViewProfilePic)
         }
+
+        val userDailyGoal = 10
+        val userDailyProgress = 6
+
+        binding.progressBarDailyWorkProgress.max = userDailyGoal
+        ObjectAnimator.ofInt(binding.progressBarDailyWorkProgress, "progress", userDailyProgress)
+            .setDuration(800)
+            .start()
     }
 
     private fun setFullScreen(setFullScreen: Boolean = true) {
