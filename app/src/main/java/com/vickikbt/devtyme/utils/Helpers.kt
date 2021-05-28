@@ -1,5 +1,6 @@
 package com.vickikbt.devtyme.utils
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 object Helpers {
@@ -14,6 +15,12 @@ object Helpers {
             in 16..20 -> "Good Evening,"
             else -> "Hey,"
         }
+    }
+
+    fun getCurrentDateTime(): String {
+        val today = Calendar.getInstance()
+
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").format(today.time)
     }
 
 }
