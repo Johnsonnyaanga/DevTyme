@@ -70,19 +70,23 @@ class HomeFragment : Fragment(), StateListener {
 
     private fun initDailyGoal() {
         val userDailyGoal = 10
-        val userDailyProgress = 6
 
-        binding.progressBarDailyWorkProgress.max = userDailyGoal
-        ObjectAnimator.ofInt(binding.progressBarDailyWorkProgress, "progress", userDailyProgress)
-            .setDuration(animationDuration.toLong())
-            .start()
+        binding.progressBarDailyWorkProgress.max = userDailyGoal * 60 * 60
 
         viewModel.getSummary().observe(viewLifecycleOwner) { summaries ->
             summaries.forEach { summary ->
                 val grandTotal = summary.grandTotal!!
+
+                val userDailyProgress = grandTotal.totalSeconds!!.toInt()
+                ObjectAnimator.ofInt(
+                    binding.progressBarDailyWorkProgress,
+                    "progress",
+                    userDailyProgress
+                ).setDuration(animationDuration.toLong()).start()
+
                 val hours = grandTotal.hours!!
                 val minutes = grandTotal.minutes!!
-                val dailyWorkProgress = "Worked ${hours}hrs ${minutes}mins of $userDailyGoal"
+                val dailyWorkProgress = "Worked ${hours}hrs ${minutes}mins of ${userDailyGoal}hrs"
 
                 binding.textViewDailyWorkProgress.text = dailyWorkProgress
             }
