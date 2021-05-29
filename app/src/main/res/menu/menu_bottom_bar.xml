@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/tasks"
+        android:title="Tasks"
+        android:icon="@drawable/ic_list"/>
+    <item
+        android:id="@+id/empty"
+        android:title=""
+        />
+    <item
+        android:id="@+id/board"
+        android:title="Board"
+        android:icon="@drawable/ic_leaderboard"/>
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"/>
 </menu>
