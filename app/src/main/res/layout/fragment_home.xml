@@ -18,14 +18,15 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/primaryColor"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="4dp">
+                android:background="@color/primaryColor">
 
+                <!--region User Profile-->
                 <TextView
                     android:id="@+id/textView_greeting"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins_bold"
@@ -57,12 +58,35 @@
                     android:id="@+id/imageView_profile_pic"
                     android:layout_width="38dp"
                     android:layout_height="38dp"
+                    android:layout_marginEnd="16dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="@id/textView_random_message"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/textView_greeting"
                     tools:src="@drawable/ic_launcher_background" />
+                <!--endregion-->
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/primaryColor"
+                    android:paddingBottom="2dp"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toBottomOf="@id/textView_random_message"
+                    app:tabGravity="fill"
+                    app:tabIndicator="@drawable/tab_layout_indicator"
+                    app:tabIndicatorAnimationMode="elastic"
+                    app:tabIndicatorColor="@color/secondaryColor"
+                    app:tabIndicatorHeight="54dp"
+                    app:tabMode="fixed"
+                    app:tabRippleColor="@null"
+                    app:tabSelectedTextColor="@color/textSelectedTab"
+                    app:tabTextAppearance="@style/TabLayoutTextTheme"
+                    app:tabTextColor="@color/white" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
         <!--endregion-->
 
@@ -154,7 +178,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="3dp"
-                            android:layout_marginBottom="4dp"
+                            android:layout_marginBottom="6dp"
                             android:ellipsize="end"
                             android:fontFamily="@font/poppins_medium"
                             android:maxLines="2"
@@ -169,7 +193,6 @@
                             android:id="@+id/progressBar_daily_work_progress"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bar_background"
                             android:scaleY="5"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@id/textView_daily_work_progress"
@@ -240,7 +263,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardView_weekly_progress"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="250dp"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="6dp"
                     app:cardBackgroundColor="@color/cardBackground"
@@ -253,7 +276,6 @@
                         android:layout_height="match_parent"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="10dp">
-
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>

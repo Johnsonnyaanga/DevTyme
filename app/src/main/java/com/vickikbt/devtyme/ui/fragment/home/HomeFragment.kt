@@ -19,7 +19,6 @@ import com.vickikbt.devtyme.utils.StateListener
 import com.vickikbt.devtyme.utils.getDisplayName
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -118,20 +117,20 @@ class HomeFragment : Fragment(), StateListener {
         }
     }
 
-    private fun getDaysOfWeek(){
-        val format = SimpleDateFormat("MM/dd/yyyy EEE")
+    private fun getDaysOfWeek() {
+        val dateFormat = SimpleDateFormat("EEEEE\ndd", Locale.getDefault())
         val calendar = Calendar.getInstance()
         calendar.firstDayOfWeek = Calendar.MONDAY
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
 
         val days = arrayOfNulls<String>(7)
         for (i in 0..6) {
-            days[i] = format.format(calendar.time)
+            days[i] = dateFormat.format(calendar.time)
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
 
         days.forEach {
-            Timber.e("Days of the week: $it")
+            binding.tabLayoutHome.addTab(binding.tabLayoutHome.newTab().setText(it))
         }
     }
 
