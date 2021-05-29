@@ -15,4 +15,6 @@
     <string name="placeholder_time">4hrs 20mins</string>
     <string name="placeholder_language">Kotlin</string>
     <string name="languages">Languages</string>
+    <string name="work_overview">Work Overview</string>
+    <string name="placeholder_work_overview">Coding</string>
 </resources>

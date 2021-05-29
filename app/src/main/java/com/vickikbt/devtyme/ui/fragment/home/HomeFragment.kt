@@ -12,8 +12,11 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.vickikbt.devtyme.R
 import com.vickikbt.devtyme.databinding.FragmentHomeBinding
+import com.vickikbt.devtyme.models.Summary
 import com.vickikbt.devtyme.ui.adapters.LanguagesAdapter
 import com.vickikbt.devtyme.ui.adapters.ProjectsAdapter
+import com.vickikbt.devtyme.ui.adapters.WorkOverviewAdapter
+import com.vickikbt.devtyme.utils.Constants.RANGE_TODAY
 import com.vickikbt.devtyme.utils.Helpers.getTimeOfDay
 import com.vickikbt.devtyme.utils.StateListener
 import com.vickikbt.devtyme.utils.getDisplayName
@@ -54,11 +57,16 @@ class HomeFragment : Fragment(), StateListener {
         binding.imageViewProfilePic.setOnClickListener { viewModel.revokeToken() }
 
         initGreeting()
-        initDailyGoal()
-        initWeeklyProgress()
-        initProjects()
-        initLanguages()
 
+        viewModel.getSummary(range = RANGE_TODAY).observe(viewLifecycleOwner) { summaries ->
+            summaries.forEach { summary ->
+                initDailyGoal(summary)
+                initWorkOverview(summary)
+                initWeeklyProgress()
+                initProjects(summary)
+                initLanguages(summary)
+            }
+        }
     }
 
     private fun initGreeting() {
@@ -67,53 +75,6 @@ class HomeFragment : Fragment(), StateListener {
             binding.textViewGreeting.text =
                 "$greetingMessage ${user.displayName?.getDisplayName()}."
             Glide.with(this).load(user.photo).circleCrop().into(binding.imageViewProfilePic)
-        }
-    }
-
-    private fun initDailyGoal() {
-        val userDailyGoal = 10
-
-        binding.progressBarDailyWorkProgress.max = userDailyGoal * 60 * 60
-
-        viewModel.getSummary().observe(viewLifecycleOwner) { summaries ->
-            summaries.forEach { summary ->
-                val grandTotal = summary.grandTotal!!
-
-                val userDailyProgress = grandTotal.totalSeconds!!.toInt()
-                ObjectAnimator.ofInt(
-                    binding.progressBarDailyWorkProgress,
-                    "progress",
-                    userDailyProgress
-                ).setDuration(animationDuration.toLong()).start()
-
-                val hours = grandTotal.hours!!
-                val minutes = grandTotal.minutes!!
-                val dailyWorkProgress = "Worked ${hours}hrs ${minutes}mins of ${userDailyGoal}hrs"
-
-                binding.textViewDailyWorkProgress.text = dailyWorkProgress
-            }
-        }
-    }
-
-    private fun initWeeklyProgress() {
-
-    }
-
-    private fun initProjects() {
-        viewModel.getSummary().observe(viewLifecycleOwner) { summaries ->
-            summaries.forEach { summary ->
-                val projectsAdapter = ProjectsAdapter(summary.projects!!)
-                binding.recyclerviewProjects.adapter = projectsAdapter
-            }
-        }
-    }
-
-    private fun initLanguages() {
-        viewModel.getSummary().observe(viewLifecycleOwner) { summaries ->
-            summaries.forEach { summary ->
-                val languageAdapter = LanguagesAdapter(summary.languages!!)
-                binding.recyclerviewLanguage.adapter = languageAdapter
-            }
         }
     }
 
@@ -133,6 +94,48 @@ class HomeFragment : Fragment(), StateListener {
             binding.tabLayoutHome.addTab(binding.tabLayoutHome.newTab().setText(it))
         }
     }
+
+    private fun initDailyGoal(summary: Summary) {
+        val userDailyGoal = 10
+
+        binding.progressBarDailyWorkProgress.max = userDailyGoal * 60 * 60
+
+        val grandTotal = summary.grandTotal!!
+
+        val userDailyProgress = grandTotal.totalSeconds!!.toInt()
+        ObjectAnimator.ofInt(
+            binding.progressBarDailyWorkProgress,
+            "progress",
+            userDailyProgress
+        ).setDuration(animationDuration.toLong()).start()
+
+        val hours = grandTotal.hours!!
+        val minutes = grandTotal.minutes!!
+        val dailyWorkProgress = "Worked ${hours}hrs ${minutes}mins of ${userDailyGoal}hrs"
+
+        binding.textViewDailyWorkProgress.text = dailyWorkProgress
+
+    }
+
+    private fun initWeeklyProgress() {
+
+    }
+
+    private fun initWorkOverview(summary: Summary) {
+        val workOverviewsAdapter = WorkOverviewAdapter(summary.categories!!)
+        binding.recyclerviewWorkOverview.adapter = workOverviewsAdapter
+    }
+
+    private fun initProjects(summary: Summary) {
+        val projectsAdapter = ProjectsAdapter(summary.projects!!)
+        binding.recyclerviewProjects.adapter = projectsAdapter
+    }
+
+    private fun initLanguages(summary: Summary) {
+        val languageAdapter = LanguagesAdapter(summary.languages!!)
+        binding.recyclerviewLanguage.adapter = languageAdapter
+    }
+
 
     private fun setFullScreen(setFullScreen: Boolean = true) {
         if (setFullScreen) requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
