@@ -1,7 +1,6 @@
 package com.vickikbt.devtyme.ui.fragment.home
 
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,9 @@ import com.vickikbt.devtyme.utils.StateListener
 import com.vickikbt.devtyme.utils.getDisplayName
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), StateListener {
@@ -36,7 +38,7 @@ class HomeFragment : Fragment(), StateListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         viewModel.stateListener = this
 
-        setFullScreen(false)
+        //setFullScreen(false)
 
         return binding.root
     }
@@ -44,10 +46,11 @@ class HomeFragment : Fragment(), StateListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getDaysOfWeek()
+
         initUI()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun initUI() {
         binding.imageViewProfilePic.setOnClickListener { viewModel.revokeToken() }
 
@@ -112,6 +115,23 @@ class HomeFragment : Fragment(), StateListener {
                 val languageAdapter = LanguagesAdapter(summary.languages!!)
                 binding.recyclerviewLanguage.adapter = languageAdapter
             }
+        }
+    }
+
+    private fun getDaysOfWeek(){
+        val format = SimpleDateFormat("MM/dd/yyyy EEE")
+        val calendar = Calendar.getInstance()
+        calendar.firstDayOfWeek = Calendar.MONDAY
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+
+        val days = arrayOfNulls<String>(7)
+        for (i in 0..6) {
+            days[i] = format.format(calendar.time)
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+
+        days.forEach {
+            Timber.e("Days of the week: $it")
         }
     }
 

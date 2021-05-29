@@ -32,7 +32,7 @@ class LoginFragment : Fragment(), StateListener {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         viewModel.stateListener = this
 
-        setFullScreen()
+        //setFullScreen()
 
         initUI()
 
