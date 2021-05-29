@@ -1,4 +1,3 @@
 package com.vickikbt.devtyme.utils.enums
 
-enum class SessionManager {
-}
+enum class SessionManager

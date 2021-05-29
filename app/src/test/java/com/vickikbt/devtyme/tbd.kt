@@ -1,4 +1,3 @@
 package com.vickikbt.devtyme
 
-class tbd {
-}
+class tbd

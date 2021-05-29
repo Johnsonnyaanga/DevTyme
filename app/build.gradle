@@ -48,6 +48,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //Local tests libs
     testImplementation "junit:junit:$jUnit_version"
@@ -69,43 +70,52 @@ dependencies {
 
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
 
+    //Lifecycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
+    //Navigation component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    //Glide-Image loading
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
+    //Hilt-Dependency Injection
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodel_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel_version"
 
+    //Retrofit-Networking
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     implementation "com.squareup.okhttp3:okhttp:$okhttp_vesion"
 
+    //Logging interceptor - Logs network request made by Retrofit
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingIntercepter_version"
 
+    //Coroutines - Asynchronous programming
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
 
+    //Room - Local caching of data
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
+    //DataStore-Local caching of Key-Value pairs
     implementation "androidx.datastore:datastore-preferences:$datastore_version"
 
+    //Timber-Easy logging
     debugImplementation "com.jakewharton.timber:timber:$timber_version"
 
+    //Lottie-Displaying of animations/gifs
     implementation "com.airbnb.android:lottie:$lottie_version"
 
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    implementation 'net.danlew:android.joda:2.10.9.1'
+    //implementation 'net.danlew:android.joda:2.10.9.1'
 
 
 }

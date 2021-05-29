@@ -2,7 +2,6 @@ package com.vickikbt.devtyme
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import net.danlew.android.joda.JodaTimeAndroid
 import timber.log.Timber
 
 @HiltAndroidApp
@@ -13,7 +12,7 @@ class DevTyme : Application() {
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
 
-        JodaTimeAndroid.init(this)
+        //JodaTimeAndroid.init(this)
     }
 
 }

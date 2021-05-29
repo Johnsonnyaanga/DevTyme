@@ -71,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/primaryColor"
+                    android:paddingHorizontal="2dp"
                     android:paddingBottom="2dp"
                     android:textAlignment="center"
                     app:layout_constraintTop_toBottomOf="@id/textView_random_message"
@@ -193,10 +194,12 @@
                             android:id="@+id/progressBar_daily_work_progress"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:scaleY="5"
+                            app:indicatorColor="@color/primaryColor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@id/textView_daily_work_progress"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:trackCornerRadius="8dp"
+                            app:trackThickness="8dp" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -264,6 +267,7 @@
                     android:id="@+id/recyclerview_work_overview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/textView_work_overview"
                     tools:itemCount="2"
@@ -289,6 +293,7 @@
                     android:id="@+id/recyclerview_projects"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/textView_projects_title"
                     tools:itemCount="4"
@@ -313,6 +318,7 @@
                     android:id="@+id/recyclerview_language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/textView_language_title"
                     tools:itemCount="2"
