@@ -10,4 +10,9 @@
     <string name="daily_goal">Daily Goal</string>
     <string name="today_s_progress">Todays Progress</string>
     <string name="weekly_progress">Weekly Progress</string>
+    <string name="projects">Projects</string>
+    <string name="placeholder_project_name">Adrian Kenya Fiber</string>
+    <string name="placeholder_time">4hrs 20mins</string>
+    <string name="placeholder_language">Kotlin</string>
+    <string name="languages">Languages</string>
 </resources>

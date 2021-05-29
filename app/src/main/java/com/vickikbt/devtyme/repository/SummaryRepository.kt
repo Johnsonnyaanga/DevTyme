@@ -28,14 +28,15 @@ class SummaryRepository @Inject constructor(
         }
     }
 
-    suspend fun fetchSummary(start: String): Flow<SummaryResponse> {
+    suspend fun fetchSummary(start: String, range:String?=null): Flow<SummaryResponse> {
         val token = "Bearer ${getAccessToken().accessToken}"
         val isSummaryCached = isSummaryCached(start)
         val networkResponse = safeApiRequest {
             apiService.fetchUserSummaries(
+                token = token,
                 start = start,
                 end = start,
-                token = token
+                range=range
             )
         }
         val cacheResponse = summariesDao.getSummary(start)

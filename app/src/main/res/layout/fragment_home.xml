@@ -155,10 +155,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="Worked 6hrs out of 8hrs"
                             android:textSize="13sp"
                             app:layout_constraintBottom_toTopOf="@id/progressBar_daily_work_progress"
-                            app:layout_constraintStart_toStartOf="@id/progressBar_daily_work_progress" />
+                            app:layout_constraintStart_toStartOf="@id/progressBar_daily_work_progress"
+                            tools:text="Worked 6hrs out of 8hrs" />
 
                         <com.google.android.material.progressindicator.LinearProgressIndicator
                             android:id="@+id/progressBar_daily_work_progress"
@@ -176,7 +176,7 @@
                 <!--endregion-->
 
                 <!--region Today's Progress-->
-                <TextView
+                <!--<TextView
                     android:id="@+id/textView_today_progress_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="10dp">
 
-                        <!--TODO: Remote pie chart-->
+                        &lt;!&ndash;TODO: Remote pie chart&ndash;&gt;
                         <com.github.mikephil.charting.charts.PieChart
                             android:id="@+id/piechart_todays_progress"
                             android:layout_width="match_parent"
@@ -216,7 +216,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>-->
                 <!--endregion-->
 
                 <!--region Weekly Progress-->
@@ -231,7 +231,7 @@
                     android:textColor="@color/textPrimary"
                     android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView_today_progress" />
+                    app:layout_constraintTop_toBottomOf="@id/cardView_daily_goal" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardView_weekly_progress"
@@ -253,6 +253,54 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
+                <!--endregion-->
+
+                <!--region Projects Region-->
+                <TextView
+                    android:id="@+id/textView_projects_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/projects"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardView_weekly_progress" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/textView_projects_title"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_project" />
+                <!--endregion-->
+
+                <!--region Projects Region-->
+                <TextView
+                    android:id="@+id/textView_language_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/languages"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerview_projects" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/textView_language_title"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_language" />
                 <!--endregion-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>

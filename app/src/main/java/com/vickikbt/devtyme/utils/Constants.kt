@@ -24,4 +24,11 @@ object Constants {
     const val DATABASE_VERSION = 1
     const val DATABASE_NAME = "DevTyme.db"
 
+    const val RANGE_TODAY="Today"
+    const val RANGE_YESTERDAY="Yesterday"
+    const val RANGE_7_DAYS="Last 7 Days"
+    const val RANGE_THIS_WEEK="This Week"
+    const val RANGE_THIS_MONTH="This Month"
+
+
 }

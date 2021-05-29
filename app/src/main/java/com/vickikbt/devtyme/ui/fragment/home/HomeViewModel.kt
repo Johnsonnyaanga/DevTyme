@@ -1,10 +1,7 @@
 package com.vickikbt.devtyme.ui.fragment.home
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.vickikbt.devtyme.models.Summary
 import com.vickikbt.devtyme.models.User
 import com.vickikbt.devtyme.repository.AuthRepository
@@ -27,12 +24,11 @@ class HomeViewModel @ViewModelInject constructor(
     private val _currentUser = MutableLiveData<User>()
     val currentUser: LiveData<User> = _currentUser
 
-    private val _summary = MutableLiveData<List<Summary>>()
-    val summary: LiveData<List<Summary>> = _summary
+    /*private val _summary = MutableLiveData<List<Summary>>()
+    val summary: LiveData<List<Summary>> = _summary*/
 
     init {
         getCurrentUser()
-        getSummary()
     }
 
     private fun getCurrentUser() {
@@ -74,25 +70,25 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun getSummary(start: String = getCurrentDateTime()) {
+    fun getSummary(start: String = getCurrentDateTime(), range:String?=null)= liveData {
         stateListener?.onLoading()
 
-        viewModelScope.launch {
+        //viewModelScope.launch {
             try {
-                val response = summaryRepository.fetchSummary(start)
+                val response = summaryRepository.fetchSummary(start, range)
                 response.collect { summaryResponse ->
-                    _summary.value = summaryResponse.summary
+                    emit(summaryResponse.summary)
                     stateListener?.onSuccess("Fetched summary: $summaryResponse")
                 }
-                return@launch
+                return@liveData
             } catch (e: ApiException) {
                 stateListener?.onError(e, "An error occurred")
-                return@launch
+                return@liveData
             } catch (e: Exception) {
                 stateListener?.onError(e)
-                return@launch
+                return@liveData
             }
-        }
+        //}
     }
 
 }
