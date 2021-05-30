@@ -28,7 +28,7 @@ class SummaryRepository @Inject constructor(
         }
     }
 
-    suspend fun fetchSummary(start: String, range:String?=null): Flow<SummaryResponse> {
+    suspend fun fetchSummary(start: String, range: String? = null): Flow<SummaryResponse> {
         val token = "Bearer ${getAccessToken().accessToken}"
         val isSummaryCached = isSummaryCached(start)
         val networkResponse = safeApiRequest {
@@ -36,7 +36,7 @@ class SummaryRepository @Inject constructor(
                 token = token,
                 start = start,
                 end = start,
-                range=range
+                range = range
             )
         }
         val cacheResponse = summariesDao.getSummary(start)
@@ -47,6 +47,21 @@ class SummaryRepository @Inject constructor(
             summaryMutableLiveData.value = networkResponse
             flowOf(networkResponse)
         }
+    }
+
+    suspend fun fetchWeekSummary(start: String, end: String): Flow<SummaryResponse> {
+        val token = "Bearer ${getAccessToken().accessToken}"
+
+        val networkResponse = safeApiRequest {
+            apiService.fetchUserSummaries(
+                token = token,
+                start = start,
+                end = end
+            )
+        }
+        //val cacheResponse = summariesDao.getSummary(start)
+
+        return flowOf(networkResponse)
     }
 
     private suspend fun saveSummary(summary: SummaryResponse) = summariesDao.saveSummary(summary)
