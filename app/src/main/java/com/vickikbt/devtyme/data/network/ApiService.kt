@@ -16,7 +16,7 @@ interface ApiService {
     suspend fun fetchUserSummaries(
         @Header("Authorization") token: String,
         @Query("start") start: String,
-        @Query("end") end: String? = null,
+        @Query("end") end: String,
         @Query("range") range: String? = null
     ): Response<SummaryResponse>
 
