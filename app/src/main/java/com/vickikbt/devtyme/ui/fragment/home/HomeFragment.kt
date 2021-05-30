@@ -18,10 +18,10 @@ import com.vickikbt.devtyme.ui.adapters.ProjectsAdapter
 import com.vickikbt.devtyme.ui.adapters.WorkOverviewAdapter
 import com.vickikbt.devtyme.utils.Constants.RANGE_TODAY
 import com.vickikbt.devtyme.utils.Helpers.getDaysOfWeek
+import com.vickikbt.devtyme.utils.Helpers.getDaysOfWeekRange
 import com.vickikbt.devtyme.utils.Helpers.getTimeOfDay
 import com.vickikbt.devtyme.utils.StateListener
 import com.vickikbt.devtyme.utils.getDisplayName
-import com.vickikbt.devtyme.utils.toUTC
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -63,11 +63,13 @@ class HomeFragment : Fragment(), StateListener {
             summaries.forEach { summary ->
                 initDailyGoal(summary)
                 initWorkOverview(summary)
-                initWeeklyProgress()
                 initProjects(summary)
                 initLanguages(summary)
             }
         }
+
+        initWeeklyProgress()
+
     }
 
     private fun initGreeting() {
@@ -84,7 +86,6 @@ class HomeFragment : Fragment(), StateListener {
 
         days.forEach {
             binding.tabLayoutHome.addTab(binding.tabLayoutHome.newTab().setText(it))
-            //Timber.e("Date format in utc: ${it?.toUTC()}")
         }
     }
 
@@ -112,6 +113,17 @@ class HomeFragment : Fragment(), StateListener {
     }
 
     private fun initWeeklyProgress() {
+        val daysRange = getDaysOfWeekRange()
+        val startDate = daysRange[0]!!
+        val endDate = daysRange[6]!!
+
+        viewModel.getWeekSummary(startDate, endDate).observe(viewLifecycleOwner) { summaries ->
+            Timber.e("Summaries size: ${summaries.size}")
+
+            summaries.forEach { summary ->
+                Timber.e("Summaries grand total: ${summary.grandTotal?.hours}hrs ${summary.grandTotal?.minutes}mins")
+            }
+        }
 
     }
 
