@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -50,12 +49,6 @@ class LoginFragment : Fragment(), StateListener {
         val url = Uri.parse(Constants.WEB_URL)
         val openBrowserIntent = Intent(intent, url)
         requireActivity().startActivity(openBrowserIntent)
-    }
-
-    //TODO: Make this reusable
-    private fun setFullScreen(setFullScreen: Boolean = true) {
-        if (setFullScreen) requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        else requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
     override fun onResume() {

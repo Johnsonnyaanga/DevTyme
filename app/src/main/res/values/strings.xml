@@ -3,18 +3,24 @@
 
     <string name="title_login">Login</string>
     <string name="title_home">Home</string>
+    <string name="title_tasks">Tasks</string>
+    <string name="title_board">Board</string>
+    <string name="title_settings">Settings</string>
 
     <string name="sign_in">Sign In</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="daily_goal">Daily Goal</string>
-    <string name="today_s_progress">Todays Progress</string>
+    <string name="today_s_progress">Today\'s Progress</string>
     <string name="weekly_progress">Weekly Progress</string>
     <string name="projects">Projects</string>
+    <string name="languages">Languages</string>
+    <string name="work_overview">Work Overview</string>
+
     <string name="placeholder_project_name">Adrian Kenya Fiber</string>
     <string name="placeholder_time">4hrs 20mins</string>
     <string name="placeholder_language">Kotlin</string>
-    <string name="languages">Languages</string>
-    <string name="work_overview">Work Overview</string>
     <string name="placeholder_work_overview">Coding</string>
+    <string name="description_add_new_task">Add new task</string>
+
 </resources>
