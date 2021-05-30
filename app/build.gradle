@@ -113,7 +113,8 @@ dependencies {
     //Lottie-Displaying of animations/gifs
     implementation "com.airbnb.android:lottie:$lottie_version"
 
-    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //MpChart-Plotting of graph/statistical data
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //implementation 'net.danlew:android.joda:2.10.9.1'
 
