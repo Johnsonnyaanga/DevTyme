@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Leaders(
     @SerializedName("current_user")
-    val currentUser: Any?=null,
+    val currentUser: User,
     @SerializedName("data")
     val board: List<Data>?=null,
     @SerializedName("language")
