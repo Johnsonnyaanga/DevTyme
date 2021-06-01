@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class BoardViewModel @ViewModelInject constructor(
     private val boardRepository: BoardRepository,
-) :ViewModel() {
+) : ViewModel() {
     var stateListener: StateListener? = null
 
 
@@ -25,14 +25,14 @@ class BoardViewModel @ViewModelInject constructor(
         fetchLeaderBoard()
     }
 
-    private fun fetchLeaderBoard(){
+    private fun fetchLeaderBoard() {
         stateListener?.onLoading()
 
         viewModelScope.launch {
             try {
                 val response = boardRepository.fetchLeaderBoard()
                 response.collect {
-                    _board.value= it
+                    _board.value = it
                     stateListener?.onSuccess("Current user")
                 }
                 return@launch
