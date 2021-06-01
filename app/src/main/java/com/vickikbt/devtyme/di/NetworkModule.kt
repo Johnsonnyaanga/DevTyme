@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit
 
 @InstallIn(ApplicationComponent::class)
 
-
 @Module
 object NetworkModule {
 
