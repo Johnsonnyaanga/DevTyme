@@ -2,7 +2,6 @@ package com.vickikbt.devtyme.ui.fragment.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.vickikbt.devtyme.models.Summary
 import com.vickikbt.devtyme.models.User
 import com.vickikbt.devtyme.repository.AuthRepository
 import com.vickikbt.devtyme.repository.SummaryRepository
@@ -70,25 +69,42 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    fun getSummary(start: String = getCurrentDateTime(), range:String?=null)= liveData {
+    fun getSummary(start: String = getCurrentDateTime(), range: String? = null) = liveData {
         stateListener?.onLoading()
 
-        //viewModelScope.launch {
-            try {
-                val response = summaryRepository.fetchSummary(start, range)
-                response.collect { summaryResponse ->
-                    emit(summaryResponse.summary)
-                    stateListener?.onSuccess("Fetched summary: $summaryResponse")
-                }
-                return@liveData
-            } catch (e: ApiException) {
-                stateListener?.onError(e, "An error occurred")
-                return@liveData
-            } catch (e: Exception) {
-                stateListener?.onError(e)
-                return@liveData
+        try {
+            val response = summaryRepository.fetchSummary(start, range)
+            response.collect { summaryResponse ->
+                emit(summaryResponse.summary)
+                stateListener?.onSuccess("Fetched summary: $summaryResponse")
             }
-        //}
+            return@liveData
+        } catch (e: ApiException) {
+            stateListener?.onError(e, "An error occurred")
+            return@liveData
+        } catch (e: Exception) {
+            stateListener?.onError(e)
+            return@liveData
+        }
+    }
+
+    fun getWeekSummary(start: String, end: String) = liveData {
+        stateListener?.onLoading()
+
+        try {
+            val response = summaryRepository.fetchWeekSummary(start, end)
+            response.collect { summaryResponse ->
+                emit(summaryResponse.summary)
+                stateListener?.onSuccess("Fetched week summary: $summaryResponse")
+            }
+            return@liveData
+        } catch (e: ApiException) {
+            stateListener?.onError(e, "An error occurred")
+            return@liveData
+        } catch (e: Exception) {
+            stateListener?.onError(e)
+            return@liveData
+        }
     }
 
 }

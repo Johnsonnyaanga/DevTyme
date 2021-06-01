@@ -17,13 +17,13 @@ import com.vickikbt.devtyme.ui.adapters.LanguagesAdapter
 import com.vickikbt.devtyme.ui.adapters.ProjectsAdapter
 import com.vickikbt.devtyme.ui.adapters.WorkOverviewAdapter
 import com.vickikbt.devtyme.utils.Constants.RANGE_TODAY
+import com.vickikbt.devtyme.utils.Helpers.getDaysOfWeek
 import com.vickikbt.devtyme.utils.Helpers.getTimeOfDay
 import com.vickikbt.devtyme.utils.StateListener
 import com.vickikbt.devtyme.utils.getDisplayName
+import com.vickikbt.devtyme.utils.toUTC
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import java.text.SimpleDateFormat
-import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), StateListener {
@@ -48,7 +48,7 @@ class HomeFragment : Fragment(), StateListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getDaysOfWeek()
+        //getDaysOfWeek()
 
         initUI()
     }
@@ -57,6 +57,7 @@ class HomeFragment : Fragment(), StateListener {
         binding.imageViewProfilePic.setOnClickListener { viewModel.revokeToken() }
 
         initGreeting()
+        initDayPicker()
 
         viewModel.getSummary(range = RANGE_TODAY).observe(viewLifecycleOwner) { summaries ->
             summaries.forEach { summary ->
@@ -78,22 +79,15 @@ class HomeFragment : Fragment(), StateListener {
         }
     }
 
-    private fun getDaysOfWeek() {
-        val dateFormat = SimpleDateFormat("EEEEE\ndd", Locale.getDefault())
-        val calendar = Calendar.getInstance()
-        calendar.firstDayOfWeek = Calendar.MONDAY
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
-
-        val days = arrayOfNulls<String>(7)
-        for (i in 0..6) {
-            days[i] = dateFormat.format(calendar.time)
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-        }
+    private fun initDayPicker() {
+        val days = getDaysOfWeek()
 
         days.forEach {
             binding.tabLayoutHome.addTab(binding.tabLayoutHome.newTab().setText(it))
+            //Timber.e("Date format in utc: ${it?.toUTC()}")
         }
     }
+
 
     private fun initDailyGoal(summary: Summary) {
         val userDailyGoal = 10
