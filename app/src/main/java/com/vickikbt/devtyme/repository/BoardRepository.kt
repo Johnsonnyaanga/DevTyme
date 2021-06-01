@@ -2,7 +2,7 @@ package com.vickikbt.devtyme.repository
 
 import com.vickikbt.devtyme.data.cache.AppDatabase
 import com.vickikbt.devtyme.data.network.ApiService
-import com.vickikbt.devtyme.models.Leaders
+import com.vickikbt.devtyme.models.Board
 import com.vickikbt.devtyme.utils.SafeApiRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -16,7 +16,7 @@ class BoardRepository @Inject constructor(
 ):SafeApiRequest(){
     private val accessTokenDao = appDatabase.accessTokenDao()
 
-    suspend fun fetchLeaderBoard(): Flow<Leaders> {
+    suspend fun fetchLeaderBoard(): Flow<Board> {
         val token = "Bearer ${getAccessToken().accessToken}"
         val networkResponse=safeApiRequest {
             apiService.fetchLeaderBoard(

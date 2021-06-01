@@ -5,22 +5,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vickikbt.devtyme.models.Leaders
+import com.vickikbt.devtyme.models.Board
 import com.vickikbt.devtyme.repository.BoardRepository
-import com.vickikbt.devtyme.repository.UserRepository
 import com.vickikbt.devtyme.utils.ApiException
 import com.vickikbt.devtyme.utils.StateListener
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class LeaderViewModel @ViewModelInject constructor(
+class BoardViewModel @ViewModelInject constructor(
     private val boardRepository: BoardRepository,
 ) :ViewModel() {
     var stateListener: StateListener? = null
 
 
-    private val _board = MutableLiveData<Leaders>()
-    val board: LiveData<Leaders> = _board
+    private val _board = MutableLiveData<Board>()
+    val board: LiveData<Board> = _board
 
     init {
         fetchLeaderBoard()

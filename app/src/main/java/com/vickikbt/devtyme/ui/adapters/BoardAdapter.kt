@@ -5,33 +5,33 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.vickikbt.devtyme.R
-import com.vickikbt.devtyme.databinding.ItemLeaderBinding
-import com.vickikbt.devtyme.models.Leaders
+import com.vickikbt.devtyme.databinding.ItemBoardBinding
+import com.vickikbt.devtyme.models.Board
 
-class LeadersAdapter constructor(private val leaders: List<Leaders>) :
-    RecyclerView.Adapter<LeadersAdapter.LeadersAdapterViewHolder>() {
+class BoardAdapter constructor(private val leaders: List<Board>) :
+    RecyclerView.Adapter<BoardAdapter.BoardAdapterViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): LeadersAdapter.LeadersAdapterViewHolder {
+    ): BoardAdapter.BoardAdapterViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: ItemLeaderBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.item_leader, parent, false)
+        val binding: ItemBoardBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.item_board, parent, false)
 
-        return LeadersAdapterViewHolder(binding)
+        return BoardAdapterViewHolder(binding)
 
     }
 
-    override fun onBindViewHolder(holder: LeadersAdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BoardAdapterViewHolder, position: Int) {
         TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int = leaders.size
 
-    inner class LeadersAdapterViewHolder(private val binding: ItemLeaderBinding) :
+    inner class BoardAdapterViewHolder(private val binding: ItemBoardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(leader: Leaders) {
+        fun bind(leader: Board) {
             val rank = "${leader.board?.get(0)}."
             val name = leader.currentUser.displayName
             binding.txtLeaderNumber.text = rank

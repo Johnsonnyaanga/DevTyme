@@ -2,7 +2,7 @@ package com.vickikbt.devtyme.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Leaders(
+data class Board(
     @SerializedName("current_user")
     val currentUser: User,
     @SerializedName("data")

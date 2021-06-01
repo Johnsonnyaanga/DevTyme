@@ -7,24 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.vickikbt.devtyme.R
-import com.vickikbt.devtyme.ui.fragment.home.HomeViewModel
 import com.vickikbt.devtyme.utils.StateListener
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
-class LeaderFragment : Fragment(),StateListener {
+class BoardFragment : Fragment(),StateListener {
 
-    private val viewModel by viewModels<LeaderViewModel>()
-
+    private val viewModel by viewModels<BoardViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?
+        ,
         savedInstanceState: Bundle?
     ): View? {
 
         // Inflate the layout for this fragment
-        val root= inflater.inflate(R.layout.fragment_leader, container, false)
+        val root= inflater.inflate(R.layout.fragment_board, container, false)
         viewModel.stateListener=this
         initUI()
         return root
