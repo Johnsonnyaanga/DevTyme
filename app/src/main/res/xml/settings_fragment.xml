@@ -3,6 +3,7 @@
     <PreferenceCategory app:title="About">
 
         <Preference
+            app:icon="@drawable/ic_about"
             app:key="key_about"
             app:summary="App Version 1.0.0"
             app:title="About"
@@ -25,15 +26,20 @@
             app:dialogTitle="Choose Theme"
             app:entries="@array/entries"
             app:entryValues="@array/entry_values"
+            app:icon="@drawable/ic_theme"
             app:key="key_theme"
             app:title="Set Theme"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <EditTextPreference
-        app:dialogTitle="Set Daily Goal"
-        app:key="key_daily_goal"
-        app:title="Set Daily Goal"
-        app:useSimpleSummaryProvider="true" />
+    <PreferenceCategory>
+        <EditTextPreference
+            app:dialogTitle="Set Daily Goal"
+            app:icon="@drawable/ic_goal"
+            app:key="key_daily_goal"
+            app:title="Set Daily Goal"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
 
 </PreferenceScreen>
