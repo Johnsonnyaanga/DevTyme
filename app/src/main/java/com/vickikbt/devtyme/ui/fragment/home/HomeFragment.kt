@@ -137,7 +137,7 @@ class HomeFragment : Fragment(), StateListener {
     }
 
     private fun initGraphUI(hoursWorked: List<Float>) {
-        val poppinsRegular = ResourcesCompat.getFont(requireActivity(), R.font.poppins_regular)
+        val poppinsBold = ResourcesCompat.getFont(requireActivity(), R.font.poppins_bold)
         val poppinsMedium = ResourcesCompat.getFont(requireActivity(), R.font.poppins_medium)
 
         binding.lineChartWeeklyProgress.apply {
@@ -156,11 +156,11 @@ class HomeFragment : Fragment(), StateListener {
 
         val leftAxis = binding.lineChartWeeklyProgress.axisLeft
         leftAxis.apply {
-            axisMaximum = 12f
+            axisMaximum = 13f
             axisMinimum = 0f
             textColor = resources.getColor(R.color.textPrimary)
-            typeface = poppinsMedium
-            textSize=13f
+            typeface = poppinsBold
+            textSize = 11f
             setDrawAxisLine(false)
             setDrawZeroLine(false)
             setDrawGridLines(true)
@@ -171,6 +171,7 @@ class HomeFragment : Fragment(), StateListener {
             position = XAxis.XAxisPosition.BOTTOM
             textColor = resources.getColor(R.color.textPrimary)
             typeface = poppinsMedium
+            setDrawGridLines(true)
             setDrawGridLines(false)
             valueFormatter = LineChartValueFormatter()
         }
@@ -190,7 +191,7 @@ class HomeFragment : Fragment(), StateListener {
         lineDataSet.apply {
             axisDependency = YAxis.AxisDependency.LEFT
             setDrawCircles(true)
-            circleRadius = 3f
+            circleRadius = 2.5f
             fillAlpha = 255
             color = ContextCompat.getColor(requireActivity(), R.color.primaryColor)
             fillColor = ContextCompat.getColor(requireActivity(), R.color.primaryColor)

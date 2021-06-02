@@ -6,6 +6,7 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.vickikbt.devtyme.R
 import com.vickikbt.devtyme.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNav.background = null
         binding.bottomNav.menu.getItem(2).isEnabled = false
+
+        binding.bottomNav.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
