@@ -24,7 +24,9 @@ class BoardAdapter constructor(private val leaders: List<Board>) :
     }
 
     override fun onBindViewHolder(holder: BoardAdapterViewHolder, position: Int) {
-        TODO("Not yet implemented")
+       val board = leaders[position]
+        holder.bind(board)
+
     }
 
     override fun getItemCount(): Int = leaders.size
