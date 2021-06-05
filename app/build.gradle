@@ -122,5 +122,8 @@ dependencies {
 
     //implementation 'net.danlew:android.joda:2.10.9.1'
 
+    //Paging 3- Pagination
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
 
 }

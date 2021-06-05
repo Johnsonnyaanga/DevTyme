@@ -20,4 +20,9 @@ interface ApiService {
         @Query("range") range: String? = null
     ): Response<SummaryResponse>
 
+    /*@GET("ghghj")
+    suspend fun fetchLeaderBoard(
+        @Header("Authorization")token: String,
+    ):Response<Board>*/
+
 }
