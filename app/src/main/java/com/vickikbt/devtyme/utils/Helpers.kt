@@ -38,4 +38,19 @@ object Helpers {
         return days
     }
 
+    fun getDaysOfWeekRange(): Array<String?> {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val calendar = Calendar.getInstance()
+        calendar.firstDayOfWeek = Calendar.MONDAY
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+
+        val days = arrayOfNulls<String>(7)
+        for (i in 0..6) {
+            days[i] = dateFormat.format(calendar.time)
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+
+        return days
+    }
+
 }

@@ -20,7 +20,11 @@
     <string name="placeholder_project_name">Adrian Kenya Fiber</string>
     <string name="placeholder_time">4hrs 20mins</string>
     <string name="placeholder_language">Kotlin</string>
+    <string name="placeholder_username">Charles Kagiri</string>
     <string name="placeholder_work_overview">Coding</string>
     <string name="description_add_new_task">Add new task</string>
+    <string name="leaderboard">LeaderBoard</string>
+    <string name="user_profile_picture">User profile picture</string>
+    <string name="hireable_icon">Hireable icon</string>
 
 </resources>

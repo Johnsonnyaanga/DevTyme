@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="entries">
+        <item>Light Theme</item>
+        <item>Dark Theme</item>
+        <item>System Default</item>
+    </string-array>
+
+    <string-array name="entry_values">
+        <item>light_theme</item>
+        <item>dark_theme</item>
+        <item>system_default</item>
+    </string-array>
+
+
+</resources>

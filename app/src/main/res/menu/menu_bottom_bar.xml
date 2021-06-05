@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/tasks"
+        android:id="@+id/navigation_tasks"
         android:icon="@drawable/ic_tasks"
         android:title="@string/title_tasks" />
     <item
         android:id="@+id/empty"
         android:title="" />
     <item
-        android:id="@+id/board"
+        android:id="@+id/navigation_board"
         android:icon="@drawable/ic_leaderboard"
         android:title="@string/title_board" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/title_settings" />
 </menu>

@@ -205,24 +205,24 @@
                 </com.google.android.material.card.MaterialCardView>
                 <!--endregion-->
 
-                <!--region Today's Progress-->
-                <!--<TextView
+                <!--region Weekly Progress-->
+                <TextView
                     android:id="@+id/textView_today_progress_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="@string/today_s_progress"
+                    android:text="@string/weekly_progress"
                     android:textColor="@color/textPrimary"
                     android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cardView_daily_goal" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardView_today_progress"
+                    android:id="@+id/cardView_weekly_progress"
                     android:layout_width="match_parent"
-                    android:layout_height="280dp"
+                    android:layout_height="300dp"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="6dp"
                     app:cardBackgroundColor="@color/cardBackground"
@@ -233,12 +233,10 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingHorizontal="12dp"
-                        android:paddingVertical="10dp">
+                        android:paddingVertical="6dp">
 
-                        &lt;!&ndash;TODO: Remote pie chart&ndash;&gt;
-                        <com.github.mikephil.charting.charts.PieChart
-                            android:id="@+id/piechart_todays_progress"
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/lineChart_weekly_progress"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -246,10 +244,10 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>-->
+                </com.google.android.material.card.MaterialCardView>
                 <!--endregion-->
 
-                <!--region Weekly Progress-->
+                <!--region WorkOverView Progress-->
                 <TextView
                     android:id="@+id/textView_work_overview"
                     android:layout_width="wrap_content"
@@ -261,7 +259,7 @@
                     android:textColor="@color/textPrimary"
                     android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardView_daily_goal" />
+                    app:layout_constraintTop_toBottomOf="@id/cardView_weekly_progress" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview_work_overview"
