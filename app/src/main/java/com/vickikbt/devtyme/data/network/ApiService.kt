@@ -1,5 +1,6 @@
 package com.vickikbt.devtyme.data.network
 
+import com.vickikbt.devtyme.models.LeadersResponse
 import com.vickikbt.devtyme.models.SummaryResponse
 import com.vickikbt.devtyme.models.UserResponse
 import retrofit2.Response
@@ -20,9 +21,10 @@ interface ApiService {
         @Query("range") range: String? = null
     ): Response<SummaryResponse>
 
-    /*@GET("ghghj")
+    @GET("leaders")
     suspend fun fetchLeaderBoard(
-        @Header("Authorization")token: String,
-    ):Response<Board>*/
+        @Header("Authorization") token: String,
+        @Query("page") page: Int? = null
+    ): LeadersResponse
 
 }

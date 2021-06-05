@@ -3,12 +3,12 @@ package com.vickikbt.devtyme.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Leaders(
+data class LeadersResponse(
     @SerializedName("current_user")
-    val currentUser: CurrentUser,
+    val currentUser: Leader,
 
     @SerializedName("data")
-    val leaders: List<LeaderResponse>,
+    val leaders: List<Leader>,
 
     @SerializedName("language")
     val language: UserLanguage,

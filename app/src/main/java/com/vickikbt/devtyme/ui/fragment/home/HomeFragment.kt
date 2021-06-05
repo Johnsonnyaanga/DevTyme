@@ -152,6 +152,7 @@ class HomeFragment : Fragment(), StateListener {
             isDragEnabled = false
             isScaleXEnabled = false
             axisRight.isEnabled = false
+            animateXY(animationDuration, animationDuration)
         }
 
         val leftAxis = binding.lineChartWeeklyProgress.axisLeft

@@ -3,7 +3,7 @@ package com.vickikbt.devtyme.models
 
 import com.google.gson.annotations.SerializedName
 
-data class LeaderResponse(
+data class Leader(
     @SerializedName("rank")
     val rank: Int,
 

@@ -1,6 +1,7 @@
 package com.vickikbt.devtyme.utils
 
 import android.content.Context
+import android.view.View
 import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,6 +22,14 @@ fun String.toPresentation(): String? {
 fun String.toUTC(): String? {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
     return dateFormat.format(this)
+}
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
 }
 
 
