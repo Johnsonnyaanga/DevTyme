@@ -26,5 +26,6 @@
     <string name="leaderboard">LeaderBoard</string>
     <string name="user_profile_picture">User profile picture</string>
     <string name="hireable_icon">Hireable icon</string>
+    <string name="devtyme">DevTyme</string>
 
 </resources>
