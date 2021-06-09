@@ -27,7 +27,6 @@ import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(), StateListener {
-
     private lateinit var binding: FragmentHomeBinding
     private val viewModel by viewModels<HomeViewModel>()
 
