@@ -30,5 +30,8 @@ object Constants {
     const val RANGE_THIS_WEEK="This Week"
     const val RANGE_THIS_MONTH="This Month"
 
+    const val STARTING_PAGE_INDEX=1
+    const val DEFAULT_PAGE_SIZE=20
+
 
 }
