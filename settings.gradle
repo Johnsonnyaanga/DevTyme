@@ -1,2 +1,10 @@
 rootProject.name = "Dev Tyme"
 include ':app'
+include ':feature:auth'
+include ':feature:home'
+include ':feature:tasks'
+include ':feature:board'
+include ':feature:settings'
+include ':data:cache'
+include ':data:network'
+include ':core'

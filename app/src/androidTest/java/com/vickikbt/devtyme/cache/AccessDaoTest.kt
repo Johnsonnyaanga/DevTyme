@@ -7,9 +7,8 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.vickikbt.devtyme.data.cache.AppDatabase
 import com.vickikbt.devtyme.data.cache.daos.AccessTokenDao
-import com.vickikbt.devtyme.models.AccessToken
+import com.vickikbt.domain.models.AccessToken
 import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before

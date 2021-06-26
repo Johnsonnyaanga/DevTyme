@@ -3,29 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_login">
+    app:startDestination="@+id/splash_fragment">
+
+    <include-dynamic
+        android:id="@+id/auth_navigation"
+        app:graphPackage="com.vickikbt.devtyme"
+        app:graphResName="auth_navigation"
+        app:moduleName=":feature:auth" />
+
 
     <fragment
-        android:id="@+id/navigation_login"
-        android:name="com.vickikbt.devtyme.ui.fragment.login.LoginFragment"
-        android:label="@string/title_login"
-        tools:layout="@layout/fragment_login" >
+        android:id="@+id/splash_fragment"
+        android:name="com.vickikbt.devtyme.ui.fragment.SplashFragment"
+        android:label="@string/splash_screen"
+        tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/login_to_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/splash_to_auth_module"
+            app:destination="@id/auth_module" />
     </fragment>
+
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.vickikbt.devtyme.ui.fragment.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.vickikbt.devtyme.ui.fragment.settings.SettingsFragment"
-        android:label="@string/title_settings" />
-    <fragment
-        android:id="@+id/navigation_board"
-        android:name="com.vickikbt.devtyme.ui.fragment.board.BoardFragment"
-        android:label="@string/leaderboard" />
+        android:id="@+id/auth_module"
+        android:name="com.vickikbt.auth.ui.fragments.login.LoginFragment"
+        app:moduleName=":feature:auth" />
 
 </navigation>
